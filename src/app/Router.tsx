@@ -18,16 +18,20 @@ const Fallback = () => {
 }
 
 const Index = lazyLoad(async () => await import('app/pages/index'))
-const Registration = lazyLoad(async () => await import ('app/pages/'))
+const Registration = lazyLoad(async () => await import ('app/pages/registration'))
+const ContactUs = lazyLoad(async () => await import ('app/pages/contact'))
+const EventPage = lazyLoad(async () => await import ('app/pages/events/index'))
 
 const Router = memo(function routes (): any {
   return (
     <BrowserRouter>
       <Suspense fallback={<Spin />}>
         <Routes>
-          <Route path='*' element={<Fallback />}/>
           <Route index element={<Index />} />
-          <Route path='/daftar' element={<Registration />} />
+          <Route path='/daftar' element={<Registration />}/>
+          <Route path='/daftar/:type' element={<EventPage/>}/>
+          <Route path='/hubungi-kami' element={<ContactUs />} />
+          <Route path='*' element={<Fallback />}/>
         </Routes>
       </Suspense>
     </BrowserRouter>

@@ -2,7 +2,7 @@ import { Pages } from 'app/types/enums'
 import { capitalize } from 'lodash'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-const NavMenu = () => {
+const MobileNavMenu = () => {
   const navigate = useNavigate()
   const path = useLocation().pathname.replace('/', '')
   const menuItems = Object.values(Pages).map((page: Pages, index) => {
@@ -14,10 +14,12 @@ const NavMenu = () => {
   })
 
   return (
-    <ul className="flex gap-5">
-      {menuItems}
+    <ul className="flex flex-col items-center gap-1 py-4">
+      <div className='w-full flex flex-col gap-2 items-center'>
+        {menuItems}
+      </div>
     </ul>
   )
 }
 
-export default NavMenu
+export default MobileNavMenu

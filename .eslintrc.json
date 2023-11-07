@@ -21,6 +21,8 @@
     "rules": {
         "@typescript-eslint/strict-boolean-expressions": "off",
         "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-floating-promises": "off",
+        "@typescript-eslint/prefer-nullish-coalescing": "off",  
         "indent": ["error", 2],
         "no-restricted-imports": ["error", {
             "patterns": [".*"]
