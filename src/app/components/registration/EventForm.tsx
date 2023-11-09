@@ -33,7 +33,7 @@ const EventForm = () => {
     try {
       const values = form.getFieldsValue()
       console.log('val => ', values)
-      message.success('Terima kasih kerana menghubungi kami')
+      message.success('Terima kasih kerana mendaftar')
     } catch {
       message.error('Gagal menghantar')
     }

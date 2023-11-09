@@ -1,24 +1,29 @@
 import { DownCircleOutlined } from '@ant-design/icons'
+import Modal from 'antd/es/modal/Modal'
 import { EVENT_DESCRIPTION, EVENT_SUMMARY, POSTER_URLS } from 'app/components/registration/contents'
 import useEventStore from 'app/stores/eventStore'
+import { useState } from 'react'
 
 const EventCTA = () => {
   const { type, formRef } = useEventStore()
+  const [openModal, setOpenModal] = useState(false)
   if (!type) {
     return <>Not Found..</>
   }
-  console.log('type ===> ', type)
   const [content, summary, photo] = [EVENT_DESCRIPTION[type], EVENT_SUMMARY[type], POSTER_URLS[type]]
 
   const handleClick = () => {
+    setOpenModal(true)
     if (formRef?.current) {
-      console.log('formRef.current ===> ', formRef.current)
       formRef.current.scrollIntoView({ behavior: 'smooth' })
     }
   }
 
   return (
     <section className="lg:py-12 lg:flex bg-slate-200 lg:justify-center">
+      <Modal title='Notis' open={openModal} onOk={() => { setOpenModal(false) }} closeIcon={null} cancelButtonProps={{ hidden: true }} okButtonProps={{ type: 'default' }}>
+        Harap maaf, pendaftaran akan dibuka pada Selasa 14 November 2023, jam 9.00 pagi.
+      </Modal>
       <div
         className="overflow-hidden  bg-white lg:mx-8 lg:flex lg:max-w-6xl lg:w-full  lg:rounded-xl">
         <div className="lg:w-1/2">

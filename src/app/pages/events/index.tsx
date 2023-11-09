@@ -1,5 +1,5 @@
 import EventCTA from 'app/components/registration/EventCTA'
-import EventForm from 'app/components/registration/EventForm'
+// import EventForm from 'app/components/registration/EventForm'
 import Navbar from 'app/components/shared/Navbar'
 import useEventStore from 'app/stores/eventStore'
 import { type EventTypes } from 'app/types/enums'
@@ -24,7 +24,7 @@ const EventPage = () => {
     <div className='py-10 flex flex-col gap-10'>
       <Navbar />
       <EventCTA />
-      <EventForm />
+      {/* <EventForm /> */}
     </div>
   )
 }
