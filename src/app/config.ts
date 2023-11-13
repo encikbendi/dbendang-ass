@@ -1,6 +1,6 @@
 export default {
   gateway: {
-    baseUrl: '',
+    baseUrl: 'http://0.0.0.0:8090',
     graphqlUrl: ''
   },
   app: {

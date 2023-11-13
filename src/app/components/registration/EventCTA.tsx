@@ -1,19 +1,16 @@
 import { DownCircleOutlined } from '@ant-design/icons'
-import Modal from 'antd/es/modal/Modal'
-import { EVENT_DESCRIPTION, EVENT_SUMMARY, POSTER_URLS } from 'app/components/registration/contents'
+import { POSTER_URLS } from 'app/components/registration/contents'
 import useEventStore from 'app/stores/eventStore'
-import { useState } from 'react'
+import { EventType } from 'app/types/enums'
 
 const EventCTA = () => {
-  const { type, formRef } = useEventStore()
-  const [openModal, setOpenModal] = useState(false)
+  const { type, formRef, event } = useEventStore()
   if (!type) {
     return <>Not Found..</>
   }
-  const [content, summary, photo] = [EVENT_DESCRIPTION[type], EVENT_SUMMARY[type], POSTER_URLS[type]]
+  const [photo] = [POSTER_URLS[type]]
 
   const handleClick = () => {
-    setOpenModal(true)
     if (formRef?.current) {
       formRef.current.scrollIntoView({ behavior: 'smooth' })
     }
@@ -21,9 +18,6 @@ const EventCTA = () => {
 
   return (
     <section className="lg:py-12 lg:flex bg-slate-200 lg:justify-center">
-      <Modal title='Notis' open={openModal} onOk={() => { setOpenModal(false) }} closeIcon={null} cancelButtonProps={{ hidden: true }} okButtonProps={{ type: 'default' }}>
-        Harap maaf, pendaftaran akan dibuka pada Selasa 14 November 2023, jam 9.00 pagi.
-      </Modal>
       <div
         className="overflow-hidden  bg-white lg:mx-8 lg:flex lg:max-w-6xl lg:w-full  lg:rounded-xl">
         <div className="lg:w-1/2">
@@ -37,21 +31,61 @@ const EventCTA = () => {
                 Acara <span className="text-green-700">{type}</span>
           </h2>
 
-          <p className="mt-4 text-gray-500 ">
-            {content}
-          </p>
-
-          <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
-            {summary}
-          </p>
-
-          <div className="inline-flex w-full mt-6 sm:w-auto">
-            <button
-              onClick={handleClick}
-              className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-              <span className='text-lg flex gap-4 items-center'>Daftar sekarang <DownCircleOutlined /></span>
-            </button>
-          </div>
+          {
+            event?.fee && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Yuran: {event?.fee}
+              </p>
+            )
+          }
+          {
+            event?.pic && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Petugas: {event?.pic}
+              </p>
+            )
+          }
+          {
+            event?.phone && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Whatsapp: <a className='text-green-700' target='whatsappTab' href={`https://wa.me/${event?.phone}`}>{event?.phone} {'<- Klik di sini'}</a>
+              </p>
+            )
+          }
+          {
+            event?.type && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Jenis Penyertaan: {event?.type === EventType.IND ? 'Individu' : event?.type === EventType.GRP ? `Berkumpulan ${event.members ? `${event.members} orang` : ''}` : '' }
+              </p>
+            )
+          }
+          {
+            event?.playerLimit && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Had peserta: {event?.playerLimit} orang
+              </p>
+            )
+          }
+          {
+            event?.gender && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Hanya untuk peserta {event?.gender} sahaja
+              </p>
+            )
+          }
+          {
+            event?.category && event?.category === 'jbsn'
+              ? <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                Sila ke laman web JBSN
+              </p>
+              : <div className="inline-flex w-full mt-6 sm:w-auto">
+                <button
+                  onClick={handleClick}
+                  className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                  <span className='text-lg flex gap-4 items-center'>Daftar sekarang <DownCircleOutlined /></span>
+                </button>
+              </div>
+          }
         </div>
       </div>
     </section>
