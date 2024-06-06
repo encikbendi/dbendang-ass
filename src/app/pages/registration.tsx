@@ -11,7 +11,13 @@ const Registration = () => {
   const [search, setSearch] = useState<string>('')
 
   const getEvents = async () => {
-    const res = await fetch(`${config.gateway.baseUrl}/get-events`)
+    const res = await fetch(`${config.gateway.baseUrl}/get-events`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ token: config.gateway.token })
+    })
     const e = await res.json()
     setData(e)
   }
@@ -27,6 +33,8 @@ const Registration = () => {
       setEvents(data.filter((event) => event.name.toLowerCase().includes(search.toLowerCase())))
     }
   }, [search, data])
+
+  console.log('events ====>', JSON.stringify(events, undefined, 2))
 
   return (
     <div className='bg-slate-200 min-h-screen py-20'>

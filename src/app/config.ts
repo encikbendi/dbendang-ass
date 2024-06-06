@@ -1,6 +1,7 @@
 export default {
   gateway: {
-    baseUrl: 'http://0.0.0.0:8090',
+    baseUrl: 'https://dbendangmelaka.com:8090',
+    token: 'REJlbmRhbmdNZWxha2FEaWJhd2FrYW5PbGVoSGlwaHViTVk',
     graphqlUrl: ''
   },
   app: {
