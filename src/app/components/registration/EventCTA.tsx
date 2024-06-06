@@ -1,14 +1,12 @@
 import { DownCircleOutlined } from '@ant-design/icons'
-import { POSTER_URLS } from 'app/components/registration/contents'
 import useEventStore from 'app/stores/eventStore'
 import { EventType } from 'app/types/enums'
 
 const EventCTA = () => {
   const { type, formRef, event } = useEventStore()
-  if (!type) {
+  if (!type || !event) {
     return <>Not Found..</>
   }
-  const [photo] = [POSTER_URLS[type]]
 
   const handleClick = () => {
     if (formRef?.current) {
@@ -22,7 +20,7 @@ const EventCTA = () => {
         className="overflow-hidden  bg-white lg:mx-8 lg:flex lg:max-w-6xl lg:w-full  lg:rounded-xl">
         <div className="lg:w-1/2">
           <div className="h-64 lg:h-full">
-            <img className='object-cover m-auto h-64 lg:h-full' src={photo} />
+            <img className='object-cover m-auto h-64 lg:h-full' src={`/${event?.name}.jpeg`} />
           </div>
         </div>
 

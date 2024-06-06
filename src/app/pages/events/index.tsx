@@ -13,7 +13,7 @@ const EventPage = () => {
 
   useEffect(() => {
     setEvent(null)
-    const eventType = paramType?.replace('-', ' ')
+    const eventType = paramType?.replaceAll('-', ' ')
     if (!eventType || eventType === type?.toString()) {
       return
     }

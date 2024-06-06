@@ -34,11 +34,37 @@ const EventForm = () => {
   }, [values])
 
   const onClick = () => {
-    try {
-      const values = form.getFieldsValue()
-      if (!values.participants[0]?.name || !values.participants[0].kp || !values.participants[0].dun) {
+    const values = form.getFieldsValue()
+    if (values.participants.length < (event?.members || 1)) {
+      message.error(`Acara ini memerlukan ${event?.members} peserta.`)
+      return
+    }
+
+    for (const i in values.participants) {
+      const participant = values.participants[i]
+      if (!participant) {
+        message.error(`Sila isikan maklumat peserta ${Number(i) + 1}`)
         return
       }
+      if (!participant.name) {
+        message.error(`Sila isikan nama peserta ${Number(i) + 1}`)
+        return
+      }
+      if (!participant.kp) {
+        message.error(`Sila isikan No. KP peserta ${Number(i) + 1}`)
+        return
+      }
+      if (!participant.phone) {
+        message.error(`Sila isikan No. Telefon peserta ${Number(i) + 1}`)
+        return
+      }
+      if (!participant.dun) {
+        message.error(`Sila isikan kawasan DUN peserta ${Number(i) + 1}`)
+        return
+      }
+    }
+
+    try {
       fetch(`${config.gateway.baseUrl}/register`, {
         method: 'POST',
         body: JSON.stringify({ ...values, event: event?.name })

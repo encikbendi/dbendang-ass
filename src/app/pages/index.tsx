@@ -1,6 +1,9 @@
 import { CTA } from 'app/components/home/CTA'
 import { Disokong } from 'app/components/home/Disokong'
+import FAQ from 'app/components/home/FAQ'
 import Hero from 'app/components/home/Hero'
+import Map from 'app/components/home/Map'
+import Promo from 'app/components/home/Promo'
 import { Footer } from 'app/components/shared/Footer'
 import Navbar from 'app/components/shared/Navbar'
 import { useDebounce } from 'app/hooks/useDebounce'
@@ -20,7 +23,6 @@ const Index = () => {
   }, [debouncedCurrentName])
 
   const isFullname = useDebounce(currentName === fullName, 500)
-  // const isFullname = false
 
   useEffect(() => {
     if (isFullname) {
@@ -32,11 +34,17 @@ const Index = () => {
     isFullname || introDone
       ? (
         <div className="min-w-screen min-h-screen">
+          <img src="/batik.jpg" className="w-full h-full object-cover fixed top-0 left-0 z-0" />
           <Navbar />
-          <Hero />
-          <CTA />
-          <Disokong/>
-          <Footer />
+          <div className='w-4/5 mx-auto bg-white relative'>
+            <Hero />
+            <CTA />
+            <Promo />
+            <Disokong/>
+            <FAQ />
+            <Map />
+            <Footer />
+          </div>
         </div>)
       : (
         <div className='bg-gray-600 flex justify-center items-center h-screen w-full text-white font-bold font-serif text-4xl lg:text-6xl pt-10'>

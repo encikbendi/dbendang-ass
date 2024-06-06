@@ -16,6 +16,7 @@
     "@types/react-dom": "^18.0.0",
     "antd": "^5.10.1",
     "date-fns": "^2.30.0",
+    "google-map-react": "^2.2.1",
     "graphql": "^16.8.1",
     "lodash": "^4.17.21",
     "react": "^18.2.0",
@@ -56,6 +57,7 @@
   "author": "Bendi",
   "license": "MIT",
   "devDependencies": {
+    "@types/google-map-react": "^2.1.10",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "eslint": "^8.0.1",
     "eslint-config-standard-with-typescript": "^39.1.1",
