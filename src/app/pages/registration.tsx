@@ -34,8 +34,6 @@ const Registration = () => {
     }
   }, [search, data])
 
-  console.log('events ====>', JSON.stringify(events, undefined, 2))
-
   return (
     <div className='bg-slate-200 min-h-screen py-20'>
       <Navbar />

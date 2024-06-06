@@ -23,6 +23,9 @@ const EventPage = () => {
   const getEvent = async () => {
     const res = await fetch(`${config.gateway.baseUrl}/get-event`, {
       method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({
         name: type
       })
