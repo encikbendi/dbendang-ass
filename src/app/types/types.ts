@@ -4,6 +4,11 @@ export interface User {
   username: string
 }
 
+export interface Outlink {
+  url: string
+  text: string
+  qr: string
+}
 export interface Event {
   _id: any
   name: EventNames
@@ -15,4 +20,6 @@ export interface Event {
   fee: number
   category: string
   gender: string
+  note: string
+  link: Outlink
 }

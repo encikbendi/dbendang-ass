@@ -1,4 +1,3 @@
-import { CTA } from 'app/components/home/CTA'
 import { Disokong } from 'app/components/home/Disokong'
 import FAQ from 'app/components/home/FAQ'
 import Hero from 'app/components/home/Hero'
@@ -38,7 +37,6 @@ const Index = () => {
           <Navbar />
           <div className='w-4/5 mx-auto bg-white relative'>
             <Hero />
-            <CTA />
             <Promo />
             <Disokong/>
             <FAQ />

@@ -14,7 +14,7 @@ const EventCard = ({ event }: Props) => {
   return (
 
     <div key={event} className='border bg-white shadow-md rounded-xl p-4 flex flex-col items-center overflow-hidden'>
-      <img src={`${event}.jpeg`} className='h-[200px] m-auto object-cover rounded-full'/>
+      <img src={`${event}.jpg`} className='h-[200px] m-auto object-cover rounded-full'/>
       <span className='font-semibold my-2'>{event}</span>
       <button className='border rounded-xl px-4 py-2 my-2 shadow-md border-slate-100' onClick={() => { handleClick(event) }}>Daftar</button>
     </div>

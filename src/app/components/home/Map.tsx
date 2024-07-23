@@ -7,10 +7,10 @@ const Map = () => {
 
   return (
     <section className='py-20'>
-      <div className='lg:h-[400px] flex flex-col lg:flex-row justify-center gap-4 px-8'>
+      <div className='lg:h-[500px] flex flex-col-reverse lg:flex-row justify-center gap-4 px-8'>
         <img src='/map.jpg' className='object-cover rounded-lg' />
-        <div className='flex flex-col'>
-          <h2 className="min-w-full flex justify-center lg:text-4xl text-lg font-semibold text-yellow-900 p-3">
+        <div className='flex flex-col items-center lg:items-start'>
+          <h2 className="min-w-full flex justify-center md:text-4xl text-2xl font-semibold text-yellow-900 p-3">
           Jumpa di sana!
           </h2>
           <a className='text-lg font-semibold items-center mx-2 px-2 py-2 rounded-lg cursor-pointer' href={gmapslink} target='_blank' rel="noreferrer">

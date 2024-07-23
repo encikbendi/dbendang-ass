@@ -8,8 +8,7 @@ export const Footer = () => {
           <div className="w-full -mx-6 lg:w-2/5">
             <div className="px-6">
               <a href="#">
-                {/* <img className="w-auto h-7" src="" alt=""/> */}
-                <p >Logo di sini</p>
+                <img className="w-auto h-7" src={'/logo.png'} alt=""/>
               </a>
 
               <p className="max-w-sm mt-2 text-gray-500">Ikuti kami di laman sosial berikut untuk perkembangan semasa.</p>

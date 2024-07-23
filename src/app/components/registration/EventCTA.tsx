@@ -20,7 +20,7 @@ const EventCTA = () => {
         className="overflow-hidden  bg-white lg:mx-8 lg:flex lg:max-w-6xl lg:w-full  lg:rounded-xl">
         <div className="lg:w-1/2">
           <div className="h-64 lg:h-full">
-            <img className='object-cover m-auto h-64 lg:h-full' src={`/${event?.name}.jpeg`} />
+            <img className='object-cover m-auto h-64 lg:h-full' src={`/${event?.name}.jpg`} />
           </div>
         </div>
 
@@ -44,13 +44,6 @@ const EventCTA = () => {
             )
           }
           {
-            event?.phone && (
-              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
-                Whatsapp: <a className='text-green-700' target='whatsappTab' href={`https://wa.me/${event?.phone}`}>{event?.phone} {'<- Klik di sini'}</a>
-              </p>
-            )
-          }
-          {
             event?.type && (
               <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
                 Jenis Penyertaan: {event?.type === EventType.IND ? 'Individu' : event?.type === EventType.GRP ? `Berkumpulan ${event.members ? `${event.members} orang` : ''}` : '' }
@@ -60,7 +53,7 @@ const EventCTA = () => {
           {
             event?.playerLimit && (
               <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
-                Had peserta: {event?.playerLimit} orang
+                Had peserta: {event?.playerLimit} {event?.type === EventType.IND ? 'orang' : 'pasukan'}
               </p>
             )
           }
@@ -83,6 +76,13 @@ const EventCTA = () => {
                   <span className='text-lg flex gap-4 items-center'>Daftar sekarang <DownCircleOutlined /></span>
                 </button>
               </div>
+          }
+          {
+            event?.note && (
+              <p className="whitespace-pre-wrap mt-4 text-gray-500 ">
+                {event?.note}
+              </p>
+            )
           }
         </div>
       </div>

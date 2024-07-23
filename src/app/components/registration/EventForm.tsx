@@ -67,6 +67,9 @@ const EventForm = () => {
     try {
       fetch(`${config.gateway.baseUrl}/register`, {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({ ...values, event: event?.name })
       })
       const params = encodeURIComponent(`Pendaftaran bagi ${values.participants[0].name}, untuk acara ${event?.name}.\nNo KP: ${values.participants[0].kp}`)
@@ -82,9 +85,19 @@ const EventForm = () => {
       <Modal title='Pendaftaran berjaya' destroyOnClose onOk={() => { navigate(-1) }} open={openFinishDialog} onCancel={() => { setOpenFinishDialog(false) }}
         cancelButtonProps={{ hidden: true }} okButtonProps={{ type: 'default' }}
       >
-        <a href={waLink} target='whatsappTab' className='text-blue-600'>
-          Klik di sini untuk ke Whatsapp petugas.
-        </a>
+        {
+          event?.link?.url
+            ? (
+              <a href={event?.link?.url} target='outlinkTab' className='text-blue-600'>
+                {event?.link?.text || 'Klik di sini'}
+                <br />
+                <br />
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${event?.link?.url}`} alt='QR Code' />
+              </a>)
+            : (
+              <a href={waLink} target='whatsappTab' className='text-blue-600'>
+                Klik di sini untuk ke Whatsapp petugas.
+              </a>)}
       </Modal>
       <Form labelCol={{ span: 5 }} wrapperCol={{ span: 40 }} form={form}>
         <Form.List name="participants">
