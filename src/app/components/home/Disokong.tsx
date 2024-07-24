@@ -30,7 +30,7 @@ export const Disokong = () => {
         <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-12.webp'} alt="Logo Partner"/>
         <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-13.png'} alt="Logo Partner"/>
         <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-14.png'} alt="Logo Partner"/>
-        <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-15.png'} alt="Logo Partner"/>
+        <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-15.jpeg'} alt="Logo Partner"/>
         <img width={120} height={120} className='hover:opacity-70 cursor-pointer mb-2 p-6 object-contain' src={'/partners-16.png'} alt="Logo Partner"/>
       </Carousel>
     </section>
