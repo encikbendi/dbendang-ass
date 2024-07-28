@@ -17,7 +17,6 @@ const EventForm = () => {
   const { formRef, setFormRef, event } = useEventStore()
   const navigate = useNavigate()
   const [openFinishDialog, setOpenFinishDialog] = useState(false)
-  const [waLink, setWaLink] = useState('')
 
   useEffect(() => {
     if (!fRef || fRef.current === formRef?.current) {
@@ -72,8 +71,6 @@ const EventForm = () => {
         },
         body: JSON.stringify({ ...values, event: event?.name })
       })
-      const params = encodeURIComponent(`Pendaftaran bagi ${values.participants[0].name}, untuk acara ${event?.name}.\nNo KP: ${values.participants[0].kp}`)
-      setWaLink(`https://wa.me/${event?.phone}/?text=${params || ''}`)
       setOpenFinishDialog(true)
     } catch {
       message.error('Gagal menghantar')
@@ -94,10 +91,10 @@ const EventForm = () => {
                 <br />
                 <img src={`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${event?.link?.url}`} alt='QR Code' />
               </a>)
-            : (
-              <a href={waLink} target='whatsappTab' className='text-blue-600'>
-                Klik di sini untuk ke Whatsapp petugas.
-              </a>)}
+            : <p>
+                Pendaftaran berjaya! Terima kasih kerana menyokong kami.
+            </p>
+        }
       </Modal>
       <Form labelCol={{ span: 5 }} wrapperCol={{ span: 40 }} form={form}>
         <Form.List name="participants">
