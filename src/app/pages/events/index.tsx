@@ -1,5 +1,4 @@
 import EventCTA from 'app/components/registration/EventCTA'
-import EventForm from 'app/components/registration/EventForm'
 import Navbar from 'app/components/shared/Navbar'
 import config from 'app/config'
 import useEventStore from 'app/stores/eventStore'
@@ -48,7 +47,6 @@ const EventPage = () => {
     <div className='py-10 flex flex-col gap-10'>
       <Navbar />
       <EventCTA />
-      {event?.category !== 'jbsn' && <EventForm />}
     </div>
   )
 }

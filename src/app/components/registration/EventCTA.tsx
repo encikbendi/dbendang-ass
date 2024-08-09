@@ -1,4 +1,4 @@
-import { DownCircleOutlined } from '@ant-design/icons'
+import { CloseCircleOutlined } from '@ant-design/icons'
 import useEventStore from 'app/stores/eventStore'
 import { EventType } from 'app/types/enums'
 
@@ -71,9 +71,10 @@ const EventCTA = () => {
               </p>
               : <div className="inline-flex w-full mt-6 sm:w-auto">
                 <button
+                  disabled={true}
                   onClick={handleClick}
-                  className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-800 rounded-lg hover:bg-gray-700 focus:ring focus:ring-gray-300 focus:ring-opacity-80">
-                  <span className='text-lg flex gap-4 items-center'>Daftar sekarang <DownCircleOutlined /></span>
+                  className="inline-flex items-center justify-center w-full px-6 py-2 text-sm text-white duration-300 bg-gray-300 rounded-lg focus:ring focus:ring-gray-300 focus:ring-opacity-80">
+                  <span className='text-lg flex gap-4 items-center'>Pendaftaran Tamat<CloseCircleOutlined /></span>
                 </button>
               </div>
           }
